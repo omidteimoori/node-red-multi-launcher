@@ -60,15 +60,19 @@ Each instance:
 
 ```
 nodered-multi/
-├── node_modules/              ← Local Node-RED install
-├── userDir/                   ← Data for each instance
-├── settings/                  ← Custom settings files
-├── internal-launch.sh         ← Helper script for macOS
-├── start-all.command          ← Double-click entry point for macOS
-├── start-all.bat              ← Double-click entry point for Windows
-├── generate-instances.js      ← Generates settings and folders
-├── package.json
-└── README.md
+├── node_modules/                 ← Local Node-RED install
+├── userDir/                      ← Data folders for each instance (instance_0 to instance_9)
+├── multi-launcher/               ← Custom multi-instance launcher files
+│   ├── settings/                 ← Auto-generated settings files for each instance
+│   ├── internal-launch.sh        ← Helper script for macOS (called by .command)
+│   ├── start-all.command         ← Double-click entry point for macOS users
+│   ├── start-all.bat             ← Double-click entry point for Windows users
+│   ├── generate-instances.js     ← Script to generate userDir/settings structure
+│   └── README.md                 ← Docs for this launcher system
+├── package.json                  ← Project dependencies
+├── package-lock.json             ← Exact dependency versions
+├── .gitignore                    ← Files to ignore in Git (macOS, logs, etc.)
+└── LICENSE                       ← MIT License from original base project
 ```
 
 ---
