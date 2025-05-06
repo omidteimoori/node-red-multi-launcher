@@ -1,0 +1,16 @@
+# macOS metadata
+.DS_Store
+__MACOSX/
+
+# Node dependencies
+node_modules/
+
+# User data and generated settings
+userDir/
+multi-launcher/settings/
+
+# Logs (optional)
+*.log
+
+# VS Code settings (if using)
+.vscode/
