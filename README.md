@@ -2,15 +2,6 @@
 
 ---
 
-## 🧾 Project Background
-
-This launcher setup is built on top of  
-[TotallyInformation’s alternate-node-red-installer](https://github.com/TotallyInformation/alternate-node-red-installer).
-
-That project provides a local, flexible Node-RED installer without needing global packages or elevated permissions.
-
----
-
 ### 🔧 Additions in This Project
 
 This fork adds:
@@ -18,7 +9,6 @@ This fork adds:
 - Automated generation of 10 independent Node-RED instances
 - A user-friendly launcher experience via double-click files
 - Simplified structure for easy distribution or classroom use
-
 
 This project allows you to run **10 isolated instances** of Node-RED on a single computer, each with its own port and configuration. It's fully cross-platform and portable — works on **macOS and Windows**.
 
@@ -33,23 +23,29 @@ Each instance:
 
 ### macOS
 
-1. **Double-click** `start-all.command`
-2. It will launch all 10 instances in the background
-3. Open your browser and go to:
+1. Run `npm install` from the project root
+2. **(Optional)** If you want to regenerate settings and folders:
+   ```bash
+   node Multi-launcher/generate-instances.js
+   ```
+3. **Double-click** `Multi-launcher/start-all.command`
+4. Open your browser and go to:
    - http://localhost:1880
-   - http://localhost:1881  
    - ...
    - http://localhost:1889
 
-> ⚠️ Requires [Node.js](https://nodejs.org/) installed
 
 ---
 
 ### Windows
 
-1. **Double-click** `start-all.bat`
-2. Ten Command Prompt windows will open (one per instance)
-3. Access the dashboards in your browser:
+1. Run `npm install` from the root folder
+2. **(Optional)** If you want to regenerate settings and folders:
+   ```bash
+   node Multi-launcher/generate-instances.js
+   ```
+3. **Double-click** `Multi-launcher/start-all.bat`
+4. Open your browser and go to:
    - http://localhost:1880
    - ...
    - http://localhost:1889
@@ -62,7 +58,7 @@ Each instance:
 nodered-multi/
 ├── node_modules/                 ← Local Node-RED install
 ├── userDir/                      ← Data folders for each instance (instance_0 to instance_9)
-├── multi-launcher/               ← Custom multi-instance launcher files
+├── Multi-launcher/              ← Custom multi-instance launcher files
 │   ├── settings/                 ← Auto-generated settings files for each instance
 │   ├── internal-launch.sh        ← Helper script for macOS (called by .command)
 │   ├── start-all.command         ← Double-click entry point for macOS users
@@ -96,14 +92,6 @@ Additional scripts and launcher automation for running 10 parallel Node-RED inst
 
 - Node.js 18 or 20 (installed globally)
 - macOS or Windows
-
----
-
-## 🔒 Tip
-
-To stop all running instances:
-- macOS/Linux: `pkill -f node-red`
-- Windows: Close the Command Prompt windows manually
 
 ---
 
