@@ -1,23 +1,25 @@
 const fs = require('fs');
 const path = require('path');
 
-// Loop through 10 instances
 for (let i = 0; i < 10; i++) {
-  const port = 1880 + i;
+  const port = 1880 + i; // updated port range: 1880–1889
   const instance = `instance_${i}`;
 
-  // Paths relative to multi-launcher/
-  const userDir = path.join(__dirname, '..', 'userDir', instance);
+  // Resolve the base directory dynamically (portable)
+  const baseDir = path.resolve(__dirname, '..');
+
+  // Define full paths for userDir and settings
+  const userDir = path.join(baseDir, 'userDir', instance);
   const settingsFile = path.join(__dirname, 'settings', `settings_${i}.js`);
 
-  // Create the userDir folder if it doesn't exist
+  // Ensure user directory exists
   fs.mkdirSync(userDir, { recursive: true });
 
-  // Settings file content
+  // Generate the settings content with absolute, escaped path
   const settings = `
 module.exports = {
     uiPort: ${port},
-    userDir: "${userDir.replace(/\\/g, '\\\\')}",
+    userDir: "${path.resolve(userDir).replace(/\\/g, '\\\\')}",
     flowFile: "flows_${instance}.json",
     logging: {
         console: {
@@ -28,9 +30,7 @@ module.exports = {
     }
 };`;
 
-  // Make sure the settings directory exists
+  // Ensure settings folder exists and write the file
   fs.mkdirSync(path.dirname(settingsFile), { recursive: true });
-
-  // Write the settings file
   fs.writeFileSync(settingsFile, settings);
 }

@@ -1,12 +1,11 @@
 {
-  "name": "alternate-node-red-installer",
-  "version": "3.0.2",
-  "description": "An alternative installer for Node-RED. Avoids global installs, no admin rights required.",
+  "name": "node-red-multi-launcher",
+  "version": "1.1.0",
+  "description": "Launch 10 independent Node-RED instances with a double-click. Cross-platform for macOS and Windows.",
   "scripts": {
-    "patch": "npm version patch -m \"Patch version bump to %s\" ",
-    "minor": "npm version minor -m \"Minor version bump to %s\" ",
+    "patch": "npm version patch -m \"Patch version bump to %s\"",
+    "minor": "npm version minor -m \"Minor version bump to %s\"",
     "major": "npm version major -m \"Major version bump to %s\"",
-    "win-tag": "git tag -a v%npm_package_version% -m \"Release v%npm_package_version%\"; git push origin --tags",
     "tag": "git tag -a v$npm_package_version -m \"Release v$npm_package_version\" && git push origin --tags"
   },
   "dependencies": {
@@ -18,27 +17,32 @@
     "replace-in-file": "^6.2.0",
     "yargs": "^17.5.1"
   },
-  "main": "bin/install-node-red.js",
+  "main": "Multi-launcher/generate-instances.js",
   "bin": {
-    "alternate-node-red-installer": "./bin/install-node-red.js",
-    "nrinstall": "./bin/install-node-red.js"
+    "multi-launcher": "./Multi-launcher/generate-instances.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TotallyInformation/alternate-node-red-installer.git"
+    "url": "https://github.com/omidtmr/node-red-multi-launcher"
   },
   "keywords": [
-    "node-red"
+    "node-red",
+    "multi-instance",
+    "launcher",
+    "cross-platform",
+    "automation",
+    "macOS",
+    "windows"
   ],
   "author": {
-    "name": "Julian Knight",
-    "url": "https://github.com/TotallyInformation"
+    "name": "Omid Teimoori",
+    "url": "https://github.com/omidteimoori"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TotallyInformation/alternate-node-red-installer/issues"
+    "url": "https://github.com/omidtmr/node-red-multi-launcher/issues"
   },
-  "homepage": "https://github.com/TotallyInformation/alternate-node-red-installer#readme",
+  "homepage": "https://github.com/omidtmr/node-red-multi-launcher#readme",
   "engines": {
     "node": ">=14.14"
   },
