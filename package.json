@@ -6,7 +6,8 @@
     "patch": "npm version patch -m \"Patch version bump to %s\"",
     "minor": "npm version minor -m \"Minor version bump to %s\"",
     "major": "npm version major -m \"Major version bump to %s\"",
-    "tag": "git tag -a v$npm_package_version -m \"Release v$npm_package_version\" && git push origin --tags"
+    "tag": "git tag -a v$npm_package_version -m \"Release v$npm_package_version\" && git push origin --tags",
+    "postinstall": "npx rimraf node_modules/node-red/CHANGELOG.md"
   },
   "dependencies": {
     "boxen": "^5.0.1",
@@ -15,7 +16,8 @@
     "node-red": "^4.0.9",
     "ora": "^5.4.0",
     "replace-in-file": "^6.2.0",
-    "yargs": "^17.5.1"
+    "yargs": "^17.5.1",
+    "rimraf": "^5.0.5"
   },
   "main": "Multi-launcher/generate-instances.js",
   "bin": {
