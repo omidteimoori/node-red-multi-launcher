@@ -165,6 +165,6 @@ Additional multi-instance launcher, cross-platform launcher, and reset workflow 
 ## Contact
 
 Created by Omid Teimoori  
-[GitHub](https://github.com/OmidTeimoori) | [LinkedIn](https://linkedin.com/in/omidteimoori)
+[Website](https://omidteimoori.com/) | [GitHub](https://github.com/OmidTeimoori) | [LinkedIn](https://linkedin.com/in/omidteimoori)
 
 Repository: https://github.com/omidteimoori/node-red-multi-launcher
