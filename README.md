@@ -53,6 +53,11 @@ Each instance:
    - http://localhost:1990
    - ...
    - http://localhost:1999
+5. To stop all running instances:
+   ```bash
+   pkill -f 'node_modules/node-red/red.js'
+   ```
+   Closing the Terminal window does not stop the detached Node-RED processes.
 
 ---
 
@@ -69,6 +74,11 @@ Each instance:
    - http://localhost:1990
    - ...
    - http://localhost:1999
+5. To stop all running instances:
+   - Close each `Node-RED <n>` Command Prompt window that opened from the launcher, or run:
+   ```bat
+   taskkill /F /FI "WINDOWTITLE eq Node-RED *"
+   ```
 
 ---
 
@@ -88,8 +98,28 @@ Each instance:
    - http://localhost:1990
    - ...
    - http://localhost:1999
+5. To stop all running instances:
+   ```bash
+   pkill -f 'node_modules/node-red/red.js'
+   ```
+   Closing the terminal that launched the script does not stop the detached Node-RED processes.
 
 ---
+
+## Stop All Instances
+
+- macOS:
+  ```bash
+  pkill -f 'node_modules/node-red/red.js'
+  ```
+- Windows:
+  ```bat
+  taskkill /F /FI "WINDOWTITLE eq Node-RED *"
+  ```
+- Linux:
+  ```bash
+  pkill -f 'node_modules/node-red/red.js'
+  ```
 
 ## Reset All Instances
 
