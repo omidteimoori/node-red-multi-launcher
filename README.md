@@ -49,6 +49,10 @@ Each instance:
    ```
 3. **Double-click** `Multi-launcher/mac_start_all.command`
    The launcher will generate the missing settings files automatically on first run.
+   If double-click does not work, run it from Terminal using the full path to the launcher, for example:
+   ```bash
+   /absolute/path/to/node-red-multi-launcher/Multi-launcher/mac_start_all.command
+   ```
 4. Open your browser and go to:
    - http://localhost:1990
    - ...
