@@ -1,31 +1,24 @@
 {
-  "name": "node-red-multi-launcher",
-  "version": "1.1.0",
-  "description": "Launch 10 independent Node-RED instances with a double-click. Cross-platform for macOS and Windows.",
+  "name": "@omidteimoori/node-red-multi-launcher",
+  "version": "2.0.0",
+  "description": "Launch 10 independent Node-RED instances with a double-click. Cross-platform for macOS, Windows, and Linux.",
   "scripts": {
-    "patch": "npm version patch -m \"Patch version bump to %s\"",
-    "minor": "npm version minor -m \"Minor version bump to %s\"",
-    "major": "npm version major -m \"Major version bump to %s\"",
-    "tag": "git tag -a v$npm_package_version -m \"Release v$npm_package_version\" && git push origin --tags",
-    "postinstall": "npx rimraf node_modules/node-red/CHANGELOG.md"
+    "generate_instances": "node ./Multi-launcher/generate-instances.js",
+    "reset_instances": "node ./Multi-launcher/reset/reset_instances.js",
+    "mac_reset_all": "bash ./Multi-launcher/reset/mac_reset_all.command",
+    "linux_reset_all": "bash ./Multi-launcher/reset/linux_reset_all.sh",
+    "windows_reset_all": ".\\Multi-launcher\\reset\\windows_reset_all.bat",
+    "mac_start_all": "bash ./Multi-launcher/mac_start_all.command",
+    "linux_start_all": "bash ./Multi-launcher/linux_start_all.sh",
+    "windows_start_all": ".\\Multi-launcher\\windows_start_all.bat"
   },
   "dependencies": {
-    "boxen": "^5.0.1",
-    "chalk": "^4.1.1",
-    "fs-extra": "^10.1.0",
-    "node-red": "^4.0.9",
-    "ora": "^5.4.0",
-    "replace-in-file": "^6.2.0",
-    "yargs": "^17.5.1",
-    "rimraf": "^5.0.5"
+    "node-red": "^4.0.9"
   },
-  "main": "Multi-launcher/generate-instances.js",
-  "bin": {
-    "multi-launcher": "./Multi-launcher/generate-instances.js"
-  },
+  "packageManager": "npm@11.12.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/omidtmr/node-red-multi-launcher"
+    "url": "https://github.com/omidteimoori/node-red-multi-launcher"
   },
   "keywords": [
     "node-red",
@@ -34,25 +27,23 @@
     "cross-platform",
     "automation",
     "macOS",
-    "windows"
+    "windows",
+    "linux"
   ],
   "author": {
     "name": "Omid Teimoori",
     "url": "https://github.com/omidteimoori"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": {
-    "url": "https://github.com/omidtmr/node-red-multi-launcher/issues"
+    "url": "https://github.com/omidteimoori/node-red-multi-launcher/issues"
   },
-  "homepage": "https://github.com/omidtmr/node-red-multi-launcher#readme",
+  "homepage": "https://github.com/omidteimoori/node-red-multi-launcher#readme",
   "engines": {
-    "node": ">=14.14"
-  },
-  "browserslist": [
-    "> 0.5%",
-    "maintained node versions",
-    "last 2 versions",
-    "not dead",
-    "not ie < 11"
-  ]
+    "node": ">=25.9.0",
+    "npm": ">=11.12.1"
+  }
 }

@@ -1,0 +1,10 @@
+This project includes work derived from:
+
+alternate-node-red-installer
+Copyright (c) Julian Knight
+https://github.com/TotallyInformation/alternate-node-red-installer
+
+This repository adds multi-instance launcher support, cross-platform start/reset scripts,
+and project-specific packaging/documentation updates by Omid Teimoori.
+
+This project is distributed under the MIT License. See LICENSE for details.

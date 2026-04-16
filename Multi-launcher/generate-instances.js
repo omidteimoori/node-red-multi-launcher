@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 for (let i = 0; i < 10; i++) {
-  const port = 1880 + i; // updated port range: 1880–1889
+  const port = 1990 + i; // updated port range: 1990-1999
   const instance = `instance_${i}`;
 
   // Resolve the base directory dynamically (portable)

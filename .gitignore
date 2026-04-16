@@ -7,10 +7,13 @@ node_modules/
 
 # User data and generated settings
 userDir/
-multi-launcher/settings/
+Multi-launcher/settings/
 
 # Logs (optional)
 *.log
 
 # VS Code settings (if using)
 .vscode/
+
+# Local smoke-test workspace
+.tmp-smoke/
