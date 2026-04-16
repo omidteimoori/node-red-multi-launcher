@@ -55,7 +55,7 @@ Each instance:
    - http://localhost:1999
 5. To stop all running instances:
    ```bash
-   pkill -f 'node_modules/node-red/red.js'
+   pkill node-red
    ```
    Closing the Terminal window does not stop the detached Node-RED processes.
 
@@ -100,7 +100,7 @@ Each instance:
    - http://localhost:1999
 5. To stop all running instances:
    ```bash
-   pkill -f 'node_modules/node-red/red.js'
+   pkill node-red
    ```
    Closing the terminal that launched the script does not stop the detached Node-RED processes.
 
