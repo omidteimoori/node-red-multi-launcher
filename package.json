@@ -3,7 +3,9 @@
   "version": "2.0.1",
   "description": "Launch 10 independent Node-RED instances with a double-click. Cross-platform for macOS, Windows, and Linux.",
   "scripts": {
+    "generate": "node ./Multi-launcher/generate-instances.js",
     "generate_instances": "node ./Multi-launcher/generate-instances.js",
+    "reset": "node ./Multi-launcher/reset/reset_instances.js",
     "reset_instances": "node ./Multi-launcher/reset/reset_instances.js",
     "mac_reset_all": "bash ./Multi-launcher/reset/mac_reset_all.command",
     "linux_reset_all": "bash ./Multi-launcher/reset/linux_reset_all.sh",

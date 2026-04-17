@@ -16,14 +16,21 @@ if [ ! -f "$SETTINGS_DIR/settings_0.js" ]; then
   node "$BASE_DIR/Multi-launcher/generate-instances.js"
 fi
 
-for i in {0..9}
-do
+i=0
+
+while [ -f "$SETTINGS_DIR/settings_${i}.js" ]; do
   INSTANCE_DIR="$BASE_DIR/userDir/instance_$i"
   LOG_FILE="$INSTANCE_DIR/node-red.log"
 
   echo "Starting Node-RED instance $i on port $((1990 + i))"
   nohup node "$NODE_RED_SCRIPT" -s "$SETTINGS_DIR/settings_${i}.js" > "$LOG_FILE" 2>&1 &
+  i=$((i + 1))
 done
 
-echo "All 10 Node-RED instances were launched in the background."
+if [ "$i" -eq 0 ]; then
+  echo "No generated instance settings were found in $SETTINGS_DIR."
+  exit 1
+fi
+
+echo "Launched $i Node-RED instance(s) in the background."
 echo "Each instance writes logs to userDir/instance_<n>/node-red.log"

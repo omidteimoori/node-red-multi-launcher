@@ -23,10 +23,21 @@ if not exist "%SETTINGS_DIR%\settings_0.js" (
   )
 )
 
-echo Starting all 10 Node-RED instances...
+set /a INSTANCE_COUNT=0
+:launch_loop
+if not exist "%SETTINGS_DIR%\settings_!INSTANCE_COUNT!.js" goto launch_done
 
-for /l %%i in (0,1,9) do (
-  set /a PORT=1990 + %%i
-  echo Starting instance %%i on port !PORT!
-  start "Node-RED %%i" cmd /k node "%NODE_RED_SCRIPT%" -s "%SETTINGS_DIR%\settings_%%i.js"
+set /a PORT=1990 + !INSTANCE_COUNT!
+echo Starting instance !INSTANCE_COUNT! on port !PORT!
+start "Node-RED !INSTANCE_COUNT!" cmd /k node "%NODE_RED_SCRIPT%" -s "%SETTINGS_DIR%\settings_!INSTANCE_COUNT!.js"
+set /a INSTANCE_COUNT+=1
+goto launch_loop
+
+:launch_done
+if !INSTANCE_COUNT! EQU 0 (
+  echo No generated instance settings were found in "%SETTINGS_DIR%".
+  pause
+  exit /b 1
 )
+
+echo Launched !INSTANCE_COUNT! Node-RED instance(s).

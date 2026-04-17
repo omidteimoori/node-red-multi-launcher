@@ -6,7 +6,7 @@
 
 This project includes:
 - Cross-platform support with `mac_start_all.command` (macOS), `windows_start_all.bat` (Windows), and `linux_start_all.sh` (Linux)
-- Automated generation of 10 independent Node-RED instances
+- Automated generation of 10 independent Node-RED instances by default
 - A user-friendly launcher experience via double-click files
 - A cross-platform reset script to clear every instance back to a clean state
 - A minimal structure containing only the files needed to run the launcher
@@ -20,7 +20,7 @@ Each instance:
 
 ---
 
-## Clone and Start
+## Quick Start
 
 1. Clone the project:
    ```bash
@@ -34,7 +34,12 @@ Each instance:
    ```bash
    npm install
    ```
-4. Use the launcher for your operating system from the `Multi-launcher/` folder.
+4. Set the maximum number of instances in `Multi-launcher/generate-instances.js` by changing `INSTANCE_COUNT` if you do not want the default of `10`.
+5. Apply that change and generate the instance settings:
+   ```bash
+   npm run generate
+   ```
+6. Use the launcher for your operating system from the `Multi-launcher/` folder.
 
 ---
 
@@ -42,13 +47,13 @@ Each instance:
 
 ### macOS
 
-1. Run `npm install` from the project root
-2. **(Optional)** If you want to regenerate settings and folders manually:
+1. After cloning and installing dependencies, set `INSTANCE_COUNT` in `Multi-launcher/generate-instances.js` if you want a number other than the default `10`
+2. Run:
    ```bash
-   node Multi-launcher/generate-instances.js
+   npm run generate
    ```
+   This applies your chosen instance count and generates the settings and folders. By default it creates 10 instances (`instance_0` to `instance_9`) on ports `1990` to `1999`.
 3. **Double-click** `Multi-launcher/mac_start_all.command`
-   The launcher will generate the missing settings files automatically on first run.
    If double-click does not work, run it from Terminal using the full path to the launcher, for example:
    ```bash
    /absolute/path/to/node-red-multi-launcher/Multi-launcher/mac_start_all.command
@@ -67,13 +72,13 @@ Each instance:
 
 ### Windows
 
-1. Run `npm install` from the root folder
-2. **(Optional)** If you want to regenerate settings and folders manually:
+1. After cloning and installing dependencies, set `INSTANCE_COUNT` in `Multi-launcher/generate-instances.js` if you want a number other than the default `10`
+2. Run:
    ```bash
-   node Multi-launcher/generate-instances.js
+   npm run generate
    ```
+   This applies your chosen instance count and generates the settings and folders. By default it creates 10 instances (`instance_0` to `instance_9`) on ports `1990` to `1999`.
 3. **Double-click** `Multi-launcher/windows_start_all.bat`
-   The launcher will generate the missing settings files automatically on first run.
 4. Open your browser and go to:
    - http://localhost:1990
    - ...
@@ -88,11 +93,12 @@ Each instance:
 
 ### Linux
 
-1. Run `npm install` from the project root
-2. **(Optional)** If you want to regenerate settings and folders manually:
+1. After cloning and installing dependencies, set `INSTANCE_COUNT` in `Multi-launcher/generate-instances.js` if you want a number other than the default `10`
+2. Run:
    ```bash
-   node Multi-launcher/generate-instances.js
+   npm run generate
    ```
+   This applies your chosen instance count and generates the settings and folders. By default it creates 10 instances (`instance_0` to `instance_9`) on ports `1990` to `1999`.
 3. Run:
    ```bash
    chmod +x Multi-launcher/linux_start_all.sh
@@ -127,17 +133,17 @@ Each instance:
 
 ## Reset All Instances
 
-To remove every user-created flow, credential file, installed instance node, and generated settings file across all 10 instances, use the buried reset launchers in `Multi-launcher/reset/`:
+If you want to reset everything after stopping Node-RED, use one of the reset launchers in `Multi-launcher/reset/`:
 
 - Windows: double-click `Multi-launcher/reset/windows_reset_all.bat`
 - macOS: double-click `Multi-launcher/reset/mac_reset_all.command`
 - Linux: run `Multi-launcher/reset/linux_reset_all.sh` directly, or double-click it if your desktop is configured to run executable scripts
 
 ```bash
-node Multi-launcher/reset/reset_instances.js
+npm run reset
 ```
 
-After the reset completes, the launcher will recreate clean instance folders and settings files the next time you start Node-RED.
+After the reset completes, set `INSTANCE_COUNT` again if needed, then run `npm run generate` before starting Node-RED again.
 
 ---
 

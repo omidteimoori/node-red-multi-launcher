@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 
-const INSTANCE_COUNT = 10;
 const multiLauncherDir = path.resolve(__dirname, '..');
 const baseDir = path.resolve(multiLauncherDir, '..');
 const userDirRoot = path.join(baseDir, 'userDir');
@@ -15,11 +14,21 @@ function removeIfExists(targetPath) {
   }
 }
 
-try {
-  for (let i = 0; i < INSTANCE_COUNT; i += 1) {
-    removeIfExists(path.join(userDirRoot, `instance_${i}`));
-    removeIfExists(path.join(settingsDir, `settings_${i}.js`));
+function removeMatchingEntries(rootDir, pattern) {
+  if (!fs.existsSync(rootDir)) {
+    return;
   }
+
+  for (const entry of fs.readdirSync(rootDir, { withFileTypes: true })) {
+    if (pattern.test(entry.name)) {
+      removeIfExists(path.join(rootDir, entry.name));
+    }
+  }
+}
+
+try {
+  removeMatchingEntries(userDirRoot, /^instance_\d+$/);
+  removeMatchingEntries(settingsDir, /^settings_\d+\.js$/);
 
   if (fs.existsSync(settingsDir) && fs.readdirSync(settingsDir).length === 0) {
     fs.rmdirSync(settingsDir);

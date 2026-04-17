@@ -1,12 +1,41 @@
 const fs = require('fs');
 const path = require('path');
 
-for (let i = 0; i < 10; i++) {
-  const port = 1990 + i; // updated port range: 1990-1999
-  const instance = `instance_${i}`;
+const INSTANCE_COUNT = 10;
+const BASE_PORT = 1990;
 
-  // Resolve the base directory dynamically (portable)
-  const baseDir = path.resolve(__dirname, '..');
+// Resolve the base directory dynamically (portable)
+const baseDir = path.resolve(__dirname, '..');
+const settingsDir = path.join(__dirname, 'settings');
+const userDirRoot = path.join(baseDir, 'userDir');
+
+function removeIfExists(targetPath) {
+  if (fs.existsSync(targetPath)) {
+    fs.rmSync(targetPath, { recursive: true, force: true });
+  }
+}
+
+fs.mkdirSync(settingsDir, { recursive: true });
+
+for (const entry of fs.readdirSync(settingsDir, { withFileTypes: true })) {
+  const match = entry.name.match(/^settings_(\d+)\.js$/);
+  if (entry.isFile() && match && Number(match[1]) >= INSTANCE_COUNT) {
+    removeIfExists(path.join(settingsDir, entry.name));
+  }
+}
+
+if (fs.existsSync(userDirRoot)) {
+  for (const entry of fs.readdirSync(userDirRoot, { withFileTypes: true })) {
+    const match = entry.name.match(/^instance_(\d+)$/);
+    if (entry.isDirectory() && match && Number(match[1]) >= INSTANCE_COUNT) {
+      removeIfExists(path.join(userDirRoot, entry.name));
+    }
+  }
+}
+
+for (let i = 0; i < INSTANCE_COUNT; i += 1) {
+  const port = BASE_PORT + i;
+  const instance = `instance_${i}`;
 
   // Define full paths for userDir and settings
   const userDir = path.join(baseDir, 'userDir', instance);
