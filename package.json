@@ -19,6 +19,7 @@
     "@omidteimoori/node-red-data-generator": "^1.0.0",
     "@omidteimoori/node-red-object-explorer": "^1.0.1",
     "node-red": "^5.0.7",
+    "node-red-contrib-opcua": "^0.2.355",
     "node-red-opcua-otmr": "^3.0.2",
     "npm": "file:vendor/npm-11.21.0-unbundled.tgz"
   },
@@ -64,6 +65,11 @@
       "ip-address": "10.7.3",
       "postcss-selector-parser": "7.1.6",
       "undici": "6.29.0"
+    },
+    "node-red-contrib-opcua": {
+      "flatted": "3.4.4",
+      "node-opcua": "2.186.17",
+      "node-opcua-file-transfer": "2.186.17"
     }
   }
 }
