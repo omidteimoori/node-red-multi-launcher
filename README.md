@@ -43,6 +43,32 @@ Each instance:
 
 ---
 
+## Included Palettes
+
+Running `npm install` in the project root installs these palettes for every instance:
+
+- FlowFuse Dashboard 2: `@flowfuse/node-red-dashboard`
+- Data Generator: `@omidteimoori/node-red-data-generator`
+- Object Explorer: `@omidteimoori/node-red-object-explorer`
+- OPC UA: `node-red-opcua-otmr`
+
+The instances share the installed Node-RED runtime and palettes, while keeping separate flows, credentials, and settings. Add and deploy Dashboard widgets in an instance to create its dashboard.
+
+---
+
+## Dependency Security
+
+Security fixes for Node-RED's pinned dependencies are recorded in `package.json` overrides and `package-lock.json`. The required npm dependency uses an unbundled upstream archive so its internal libraries can receive these fixes. Its code is unchanged; provenance and rebuild instructions are in [vendor/README.md](vendor/README.md).
+
+To reproduce the checked dependency versions and check for known vulnerabilities:
+
+```bash
+npm ci
+npm audit
+```
+
+---
+
 ## How to Use
 
 ### macOS
